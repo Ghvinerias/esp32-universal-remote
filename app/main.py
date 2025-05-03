@@ -17,7 +17,7 @@ import time
 #    print('Connecting to WiFi...')
 #    time.sleep(1)
 #
-#ip_address = sta.ifconfig()[0]
+ip_address = sta.ifconfig()[0]
 print('Connected:', ip_address)
 
 # ==== OLED ====
