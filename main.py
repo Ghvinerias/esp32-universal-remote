@@ -13,7 +13,7 @@ i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 oled = ssd1306.SSD1306_I2C(128, 64, i2c)
 
 # ==== Menus ====
-main_menu = ["Load Remote", "Item new", "Item 3", "Item 4", "Item 5", "Item 6", "Check for Updates"]
+main_menu = ["Load Remote", "Item neww", "Item 3", "Item 4", "Item 5", "Item 6", "Check for Updates"]
 submenu_item_6 = ["..", "Load Remote", "SubItem 2", "SubItem 3", "SubItem 4", "SubItem 5"]
 menu_stack = [main_menu]
 current_index = 0
