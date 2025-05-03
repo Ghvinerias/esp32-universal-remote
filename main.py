@@ -5,18 +5,6 @@ import ujson
 import ssd1306
 import time
 
-# ==== WiFi connection ====
-#ssid = ''
-#password = ''
-
-#sta = network.WLAN(network.STA_IF)
-#sta.active(True)
-#sta.connect(ssid, password)
-
-#while not sta.isconnected():
-#    print('Connecting to WiFi...')
-#    time.sleep(1)
-#
 ip_address = sta_if.ifconfig()[0]
 print('Connected to network:', ip_address)
 
