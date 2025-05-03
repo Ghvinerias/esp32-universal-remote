@@ -42,43 +42,6 @@ debounce_time = 0
 debounce_delay = 300  # ms
 
 
-def ota_update():
-    try:
-        oled.fill(0)
-        oled.text("Checking for", 0, 0)
-        oled.text("updates...", 0, 8)
-        oled.show()
-
-        response = urequests.get("http://10.10.10.187:3000/main.py")
-        if response.status_code == 200:
-            print("Status code:", response.status_code)
-            with open('main.py', 'w') as f:
-                f.write(response.text)
-            oled.fill(0)
-            oled.text("Update done!", 0, 20)
-            oled.text("Restarting...", 0, 30)
-            oled.show()
-            time.sleep(2)
-            machine.reset()
-        else:
-            oled.fill(0)
-            oled.text("No update", 0, 0)
-            oled.text("available.", 0, 8)
-            oled.show()
-            print("OTA failed:", e)
-            time.sleep(2)
-            draw_menu(menu_stack[-1], current_index)
-
-        response.close()
-
-    except Exception as e:
-        oled.fill(0)
-        oled.text("Update failed!", 0, 8)
-        oled.show()
-        print("OTA failed:", e)
-        time.sleep(2)
-        draw_menu(menu_stack[-1], current_index)
-
 # ==== Functions ====
 
 def draw_menu(menu, selected_index):
