@@ -1,4 +1,4 @@
-from machine import Pin, I2C
+import machine
 import network
 import urequests
 import ujson
@@ -111,7 +111,7 @@ while True:
                 draw_menu(menu_stack[-1], current_index)
         
         elif current_menu == main_menu and selected_item == "Check for Updates":
-            ota_update()
+            machine.reset()
                 
         elif current_menu == main_menu and selected_item == "Item 6":
             menu_stack.append(submenu_item_6)
