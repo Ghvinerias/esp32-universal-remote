@@ -18,7 +18,7 @@ import time
 #    time.sleep(1)
 #
 ip_address = sta_if.ifconfig()[0]
-print('Connected:', ip_address)
+print('Connected to network:', ip_address)
 
 # ==== OLED ====
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
