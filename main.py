@@ -1,32 +1,23 @@
-import network
+from machine import Pin, I2C
+import ssd1306
 import time
-from ota_updater import OTAUpdater
 
-SSID = '' #Set WiFi SSID
-PASSWORD = '' #Set WiFi Password
-GIT_REPO = 'https://github.com/ghvinerias/esp32-universal-remote' #Change With your repo
+i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+oled = ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C)
 
 
-def connect_wifi():
-    wlan = network.WLAN(network.STA_IF)
-    wlan.active(True)
-    wlan.connect(SSID, PASSWORD)
-    while not wlan.isconnected():
-        print("Connecting...")
-        time.sleep(1)
-    print("Connected! IP:", wlan.ifconfig()[0])
+oled.fill(0)
+oled.text("Hello, ESPHome!", 0, 0)
+oled.hline(0, 8, 128, 1)
+oled.hline(0, 9, 128, 1)
+oled.hline(0, 10, 128, 1)
+oled.hline(0, 11, 128, 1)
+oled.hline(0, 12, 128, 1)
+oled.hline(0, 13, 128, 1)
+oled.hline(0, 14, 128, 1)
+oled.hline(0, 15, 128, 1)
+oled.text("Hello, ESPHome!", 0, 16)
+oled.text("Hello, ESPHome!", 0, 16)
+oled.show()
 
-def check_for_updates():
-    ota = OTAUpdater(GIT_REPO)
-    ota.install_update_if_available()
-
-connect_wifi()
-check_for_updates()
-
-# run app
-try:
-    import app.app_main as app_main
-    app_main.run()
-except Exception as e:
-    print("App failed:", e)
 
